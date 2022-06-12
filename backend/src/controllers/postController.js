@@ -5,11 +5,18 @@ const {
 const PostController = {
     async create(req, res) {
         try {
-            const newPost = await Post.create({
-                ...req.body
-            })
+            const {user_id, content } = req.body;
 
-            return res.status(201).json(newPost)
+        if (!user_id || !content)
+        return res.status(400).json({
+            message: 'Id de usuário e conteúdo são obrigatórios!'
+        })
+        const newPost = await Post.create({
+           user_id,
+           content
+        });
+
+        res.json(newPost);
         } catch (error) {
             res.json('Não foi possível publicar');
             console.error(error);
