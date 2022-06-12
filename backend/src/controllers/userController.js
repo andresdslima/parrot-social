@@ -3,11 +3,22 @@ const { User } = require("../database/models/index")
 const UserController = {
     async create(req,res) {
         try {
-        const newUser = await User.create({
-            ...req.body
-        })
+        const {name, email, password, apartment } = req.body;
 
-        return res.status(201).json(newUser)
+        if (!name || !email || !password || !apartment)
+        return res.status(400).json({
+            message: 'Todas as informações são obrigatórias!'
+        })
+        const newPassword = bcrypt.hashSync(password,5)    
+        const newUser = await User.create({
+            name,
+            email,
+            password:newPassword,
+            apartment
+        });
+
+        res.json(newUser);
+
     } catch (error) {
         res.json('Não foi possível cadastrar o usuário');
             console.error(error);
