@@ -10,6 +10,12 @@ const User = db.define ('user', {
     nome: {
         type: DataTypes.INTEGER
     },
+    username: {
+        type: DataTypes.STRING
+    },
+    avatar: {
+        type: DataTypes.STRING  
+    },
     email: {
         type: DataTypes.STRING
     },
