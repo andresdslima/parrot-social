@@ -1,4 +1,5 @@
 const { User } = require("../database/models/index")
+const bcrypt = require ('bcrypt');
 
 const UserController = {
     async create(req,res) {
