@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import logo from '../../assets/logo-login.png'
 import * as Styled from './styled';
-import { Form, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Form, ToggleButtonGroup, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import user1 from '../../assets/user1.png';
 import user2 from '../../assets/user2.png';
 import user3 from '../../assets/user3.png';
@@ -11,27 +10,23 @@ import { useFormik } from 'formik';
 import { createUser } from '../../services/MainAPI/users';
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('This is required*'),
-  email: Yup.string().email('Invalid email').required('This is required*'),
-  username: Yup.string().min(10, 'Minimum 10 characters').required('This is required*'),
-  password: Yup.string().min(10, 'Minimum 10 characters').required('This is required*'),
-  apartment: Yup.number().min(10, 'Minimum 10 characters').required('This is required*'),
+  name: Yup.string().required('*'),
+  email: Yup.string().email('Email inválido').required('*'),
+  username: Yup.string().required('*'),
+  password: Yup.string().min(6, 'Mínimo 6').required('*'),
+  apartment: Yup.number().required('*'),
+  avatar: Yup.string().required(),
 });
 
 const RegistrationForm: React.FC = () => {
-  const [radioValue, setRadioValue] = useState('1');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRadioValue(event.target.value);
-  };
-
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       username: '',
-      password: '',
-      apartment: 0,
+      password: '', // CONFIRMAR PASSWORD???
+      apartment: undefined,
+      avatar: '1',
     },
 
     validationSchema,
@@ -42,14 +37,19 @@ const RegistrationForm: React.FC = () => {
         email: values.email,
         username: values.username,
         password: values.password,
-        apartment: values.apartment
+        apartment: values.apartment,
+        avatar: values.avatar,
+        admin: false,
       });
 
+      console.log(values);
       values.name = '';
       values.email = '';
       values.username = '';
       values.password = '';
-      values.apartment = 0;
+      values.apartment = undefined;
+      values.avatar = '1';
+      alert('Usuário criado com sucesso!');
     }
   });
 
@@ -57,83 +57,133 @@ const RegistrationForm: React.FC = () => {
     <>
       <Styled.Logo src={logo} alt="Parrot logo" />
       <h2>CADASTRO</h2>
-      <Styled.SForm>
-        <Form.Group controlId="formBasicName">
-          <Styled.SInput type="text" placeholder='Nome e Sobrenome' />
+      <Styled.SForm onSubmit={formik.handleSubmit}>
+        <Form.Group>
+          {formik.errors.name && <small>{formik.errors.name}</small>}
+          <Styled.SInput
+            type="text"
+            name='name'
+            id='name'
+            placeholder='Nome e Sobrenome'
+            value={formik.values.name}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
-          <Styled.SInput type="email" placeholder='Email' />
+        {formik.errors.email && <small>{formik.errors.email}</small>}
+        <Form.Group>
+          <Styled.SInput
+            type="email"
+            name='email'
+            id='email'
+            placeholder='Email'
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group controlId="formBasicUsername">
-          <Styled.SInput type="text" placeholder='Usuário' />
+        <Form.Group>
+          {formik.errors.username && <small>{formik.errors.username}</small>}
+          <Styled.SInput
+            type="text"
+            placeholder='Usuário'
+            name='username'
+            id='username'
+            value={formik.values.username}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Styled.SInput type="password" placeholder='Senha' />
+        {formik.errors.password && <small>{formik.errors.password}</small>}
+        <Form.Group>
+          <Styled.SInput
+            type="password"
+            placeholder='Senha (mínimo 6)'
+            name='password'
+            id='password'
+            value={formik.values.password}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Styled.SInput type="password" placeholder='Confirmar Senha' />
+        {/* {formik.errors.password && <small>{formik.errors.password}</small>}
+        <Form.Group>
+          <Styled.SInput
+            type="password"
+            placeholder='Confirmar Senha'
+            name='password'
+            id='password'
+            value={formik.values.password}
+            onChange={formik.handleChange}
+          />
+        </Form.Group> */}
+
+        <Form.Group>
+          <Styled.SInput
+            type="number"
+            placeholder='Apartamento Nº'
+            name='apartment'
+            id='apartment'
+            value={formik.values.apartment}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group controlId="formBasicApartment">
-          <Styled.SInput type="number" placeholder='Apartamento Nº' />
-        </Form.Group>
-
-        <ButtonGroup>
+        {/* ButtonGroup */}
+        <ToggleButtonGroup type='radio' name='options' defaultValue='1'>
           <ToggleButton
             key='1'
-            id='1'
+            id='radio-1'
+            name='radio'
             type="radio"
-            name="1"
             value="1"
-            checked={radioValue === '1'}
-            onChange={handleChange}
+            checked={formik.values.avatar === '1'}
+            onChange={formik.handleChange}
           >
-            <img src={user1} alt="User 1" />
+            <img src={user1} alt="Man 1" />
           </ToggleButton>
 
           <ToggleButton
             key='2'
-            id='2'
+            id='radio-2'
+            name='radio'
             type="radio"
-            name="2"
             value="2"
-            checked={radioValue === '2'}
-            onChange={handleChange}
+            checked={formik.values.avatar === '2'}
+            onChange={formik.handleChange}
           >
-            <img src={user2} alt="User 2" />
+            <img src={user2} alt="Woman 1" />
           </ToggleButton>
 
           <ToggleButton
             key='3'
-            id='3'
+            id='radio-3'
+            name='radio'
             type="radio"
-            name="3"
             value="3"
-            checked={radioValue === '3'}
-            onChange={handleChange}
+            checked={formik.values.avatar === '3'}
+            onChange={formik.handleChange}
           >
-            <img src={user3} alt="User 3" />
+            <img src={user3} alt="Man 2" />
           </ToggleButton>
 
           <ToggleButton
             key='4'
-            id='4'
+            id='radio-4'
+            name='radio'
             type="radio"
-            name="4"
             value="4"
-            checked={radioValue === '4'}
-            onChange={handleChange}
+            checked={formik.values.avatar === '4'}
+            onChange={formik.handleChange}
           >
-            <img src={user4} alt="User 4" />
+            <img src={user4} alt="Woman 2" />
           </ToggleButton>
-        </ButtonGroup>
+        </ToggleButtonGroup>
 
         <Styled.SButton type="submit">Cadastrar</Styled.SButton>
       </Styled.SForm>
+
+      <Styled.SLink to="/login">Já possuo cadastro</Styled.SLink>
     </>
   );
 };

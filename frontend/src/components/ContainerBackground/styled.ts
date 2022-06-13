@@ -17,7 +17,7 @@ export const ContainerBackground = styled.div`
 
 export const CentralCard = styled.div`
   max-height: 100vh;
-  background-color: #ffe;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,12 +25,12 @@ export const CentralCard = styled.div`
   text-align: center;
   border-radius: 20px;
   font-family: "Questrial", sans-serif;
-  padding: 36% 2%;
+  padding: 27% 2%;
   box-sizing: border-box;
   border: 1px solid #c5c5c5;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 
-  @media only screen and (max-width: 900px) {
-    padding: 40% 2%;
+  @media only screen and (max-width: 1050px) {
+    padding: 38% 2%;
   }
 `;

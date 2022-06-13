@@ -5,15 +5,44 @@
       "name": "Andre Lima",
       "email": "andre@email.com",
       "username": "andre.lima",
-      "apartment": 3,
-      "password": "codificado",
-      "image": "random url",
-      "isAdmin": true,
+      "apartment": 1,
+      "password": "$2a$10$feWyKG0ZBqFsfU0IaajZ4.OivC.EjHn3YpRMWfqH.nSbySmQApdl6",
+      "avatar": "1",
+      "admin": true,
       "created_at": "2019-01-01 00:00:00",
       "updated_at": "2019-01-01 00:00:00"
+    },
+    {
+      "email": "aaa@aaa.com",
+      "password": "$2a$10$feWyKG0ZBqFsfU0IaajZ4.OivC.EjHn3YpRMWfqH.nSbySmQApdl6",
+      "name": "asd asd",
+      "username": "asd.asd",
+      "apartment": 11,
+      "avatar": "1",
+      "admin": false,
+      "id": 2
+    },
+    {
+      "name": "a",
+      "email": "a@a.a",
+      "username": "a",
+      "password": "aaaaaa",
+      "apartment": 12,
+      "avatar": "1",
+      "admin": false,
+      "id": 3
+    },
+    {
+      "name": "aaa",
+      "email": "aaa@aaa.com",
+      "username": "aaa",
+      "password": "aaaaaa",
+      "apartment": 11,
+      "avatar": "1",
+      "admin": false,
+      "id": 4
     }
   ],
-  
   "posts": [
     {
       "id": 1,

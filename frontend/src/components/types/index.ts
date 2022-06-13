@@ -4,13 +4,17 @@ export interface User {
   email: string,
   username: string,
   password: string,
-  apartment: number,
-  image?: string,
-  isAdmin?: boolean,
+  apartment: number | undefined,
+  avatar?: string,
+  admin?: boolean,
+  created_at?: string,
+  updated_at?: string,
 };
 
 export interface Post {
   id: number,
   user_id: number,
   content: string,
+  created_at?: string,
+  updated_at?: string,
 };

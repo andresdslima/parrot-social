@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const SForm = styled(Form)`
   display: flex;
@@ -7,6 +8,13 @@ export const SForm = styled(Form)`
   align-items: center;
   justify-content: center;
   gap: 2vh;
+
+  small {
+    color: #f00;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+  }
 `;
 
 export const SInput = styled(Form.Control)`
@@ -19,6 +27,7 @@ export const SInput = styled(Form.Control)`
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
+  margin: 0;
 
   @media only screen and (max-width: 900px) {
     font-size: 15px;
@@ -47,6 +56,7 @@ export const SButton = styled(Button)`
   @media only screen and (max-width: 900px) {
     font-size: 15px;
     width: 45%;
+    padding: 3px 15px;
   }
 `;
 
@@ -59,5 +69,18 @@ export const Logo = styled.img`
 
   @media only screen and (max-width: 450px) {
     width: 20%;
+  }
+`;
+
+export const SLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+
+  &:hover {
+    color: #0075ff;
+  }
+
+  @media only screen and (max-width: 450px) {
+    font-size: 13px;
   }
 `;

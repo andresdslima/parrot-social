@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "api": "json-server-auth api.json -p 3333",
+    "api": "json-server-auth -w api.json -p 3333",
     "preview": "vite preview"
   },
   "dependencies": {
