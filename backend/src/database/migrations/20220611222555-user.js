@@ -10,15 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        unique: true,
+        allowNull: false,
         type: Sequelize.STRING(70)
       },
       username: {
+        unique: true,
+        allowNull: false,
         type: Sequelize.STRING(15)
       },
       avatar: {
+        allowNull: false,
         type: Sequelize.STRING(1)
       },
       email: {
+        unique: true,
+        allowNull: false,
         type: Sequelize.STRING(70)
       },
       apartment: {
@@ -29,6 +36,7 @@ module.exports = {
         type: Sequelize.STRING(120)
       },
       admin: {
+        allowNull: false,
           type: Sequelize.BOOLEAN
       },
       createdAt: {

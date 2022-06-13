@@ -1,4 +1,4 @@
-const db = require ('../dataBase/dbConexao')
+const db = require ('../database/index')
 const { DataTypes } = require ('sequelize')
 
 const User = db.define ('user', {
@@ -7,19 +7,22 @@ const User = db.define ('user', {
         primaryKey: true,
         autoIncrement: true
     },
-    nome: {
+    name: {
+        unique: true,
         type: DataTypes.INTEGER
     },
     username: {
+        unique: true,
         type: DataTypes.STRING
     },
     avatar: {
         type: DataTypes.STRING  
     },
     email: {
+        unique: true,
         type: DataTypes.STRING
     },
-    apartament: {
+    apartment: {
         type: DataTypes.STRING
     },
     password: {
