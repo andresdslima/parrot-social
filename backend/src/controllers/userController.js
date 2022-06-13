@@ -1,21 +1,24 @@
-const { User } = require("../database/models/index")
+const { User } = require("../models")
 const bcrypt = require ('bcrypt');
 
 const UserController = {
     async create(req,res) {
         try {
-        const {name, email, password, apartment } = req.body;
+        const {name,username, avatar, email, password, apartment, admin } = req.body;
 
-        if (!name || !email || !password || !apartment)
+        if (!name || !username || !avatar || !email || !password || !apartment || !admin)
         return res.status(400).json({
             message: 'Todas as informações são obrigatórias!'
         })
         const newPassword = bcrypt.hashSync(password,5)    
         const newUser = await User.create({
             name,
+            username,
+            avatar,
             email,
             password:newPassword,
-            apartment
+            apartment,
+            admin
         });
 
         res.json(newUser);
@@ -40,7 +43,7 @@ const UserController = {
                 id
             } = req.params;
             const {
-                name, email, apartment, password
+                name, username, avatar, email, apartment, password, admin
             } = req.body;
 
             const existId = await User.count({
@@ -54,7 +57,7 @@ const UserController = {
             }
 
             const updatedUser = await User.update({
-                name, email, apartment, password
+                name, username, avatar, email, apartment, password, admin
             }, {
                 where: {
                     user_id: id,
