@@ -15,7 +15,7 @@ const Post = db.define ('post', {
             key: 'idUser'
         }
     },
-    comments: {
+    content: {
         type: DataTypes.STRING
     },
     createdAt: {

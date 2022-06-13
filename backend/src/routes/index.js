@@ -7,6 +7,7 @@ routes = express.Router()
 
 routes.post("/user", UserController.create)
 routes.get("/user", UserController.listAllUsers)
+routes.get("/user/:username/posts", UserController.listPostsByUsername)
 routes.put("/user/:id", UserController.updateUser)
 routes.delete("/user/:id", UserController.deleteUser)
 

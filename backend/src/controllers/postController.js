@@ -32,6 +32,8 @@ const PostController = {
         }
     },
 
+   
+
     async updatePost(req, res) {
         try {
             const {
