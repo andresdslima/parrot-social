@@ -9,7 +9,7 @@ const User = db.define ('user', {
     },
     name: {
         unique: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
     username: {
         unique: true,
@@ -23,7 +23,7 @@ const User = db.define ('user', {
         type: DataTypes.STRING
     },
     apartment: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
     },
     password: {
         type: DataTypes.STRING

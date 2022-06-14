@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response} from "express";
-import { ValidationError } from "express-validation";
+const { NextFunction, Request, Response} = require ("express");
+const { ValidationError } = require ("express-validation");
 
-export default function (err, req, res, next) {
-  if (err instanceof ValidationError) {
-    return res.status(err.statusCode).json(err);
+module.exports = (error, req, res, next) => {
+  if (error instanceof ValidationError) {
+    return res.status(error.statusCode).json(error);
   }
 
-  return res.status(500).json(err);
+  return res.status(500).json(error);
 };
