@@ -1,6 +1,6 @@
 import logo from '../../assets/logo-login.png'
 import * as Styled from './styled';
-import { Form, ToggleButtonGroup, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Form, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import user1 from '../../assets/user1.png';
 import user2 from '../../assets/user2.png';
 import user3 from '../../assets/user3.png';
@@ -14,6 +14,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email('Email inválido').required('*'),
   username: Yup.string().required('*'),
   password: Yup.string().min(6, 'Mínimo 6').required('*'),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Senhas não conferem').required('*'),
   apartment: Yup.number().required('*'),
   avatar: Yup.string().required(),
 });
@@ -24,9 +25,11 @@ const RegistrationForm: React.FC = () => {
       name: '',
       email: '',
       username: '',
-      password: '', // CONFIRMAR PASSWORD???
+      password: '',
+      confirmPassword: '',
       apartment: undefined,
       avatar: '1',
+      admin: false,
     },
 
     validationSchema,
@@ -43,13 +46,16 @@ const RegistrationForm: React.FC = () => {
       });
 
       console.log(values);
+      alert('Usuário cadastrado com sucesso!');
+
       values.name = '';
       values.email = '';
       values.username = '';
       values.password = '';
       values.apartment = undefined;
       values.avatar = '1';
-      alert('Usuário criado com sucesso!');
+      values.admin = false;
+      values.confirmPassword = '';
     }
   });
 
@@ -106,17 +112,17 @@ const RegistrationForm: React.FC = () => {
           />
         </Form.Group>
 
-        {/* {formik.errors.password && <small>{formik.errors.password}</small>}
+        {formik.errors.confirmPassword && <small>{formik.errors.confirmPassword}</small>}
         <Form.Group>
           <Styled.SInput
             type="password"
             placeholder='Confirmar Senha'
-            name='password'
-            id='password'
-            value={formik.values.password}
+            name='confirmPassword'
+            id='confirmPassword'
+            value={formik.values.confirmPassword}
             onChange={formik.handleChange}
           />
-        </Form.Group> */}
+        </Form.Group>
 
         <Form.Group>
           <Styled.SInput
@@ -129,12 +135,11 @@ const RegistrationForm: React.FC = () => {
           />
         </Form.Group>
 
-        {/* ButtonGroup */}
-        <ToggleButtonGroup type='radio' name='options' defaultValue='1'>
+        <ToggleButtonGroup type='radio' name='avatar' role='group' defaultValue='1' aria-labelledby="my-radio-group">
           <ToggleButton
             key='1'
             id='radio-1'
-            name='radio'
+            name='avatar'
             type="radio"
             value="1"
             checked={formik.values.avatar === '1'}
@@ -146,7 +151,7 @@ const RegistrationForm: React.FC = () => {
           <ToggleButton
             key='2'
             id='radio-2'
-            name='radio'
+            name='avatar'
             type="radio"
             value="2"
             checked={formik.values.avatar === '2'}
@@ -158,7 +163,7 @@ const RegistrationForm: React.FC = () => {
           <ToggleButton
             key='3'
             id='radio-3'
-            name='radio'
+            name='avatar'
             type="radio"
             value="3"
             checked={formik.values.avatar === '3'}
@@ -170,7 +175,7 @@ const RegistrationForm: React.FC = () => {
           <ToggleButton
             key='4'
             id='radio-4'
-            name='radio'
+            name='avatar'
             type="radio"
             value="4"
             checked={formik.values.avatar === '4'}
