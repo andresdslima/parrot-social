@@ -1,6 +1,9 @@
+
 const express = require('express');
 const routes = require('./src/routes');
-const db = require('./src/database')
+const handleError = require('./src/middlewares/handleMiddleware');
+const db = require('./src/database');
+const port = process.env.APP_PORT
 
 const app = express()
 
@@ -10,4 +13,6 @@ db.hasConection()
 
 app.use(routes)
 
-app.listen(6000, () => console.log('Servidor no ar!'))
+app.use(handleError)
+
+app.listen(6000 || port, () => console.log('Servidor no ar!'))
