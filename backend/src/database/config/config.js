@@ -9,10 +9,10 @@ module.exports = {
     "dialect": process.env.DB_DIALECT
   },
   "test": {
-    "username": "bb7bfc81bbd706",
-    "password": "fecdec46",
-    "database": "heroku_38d45a6d513ff03",
-    "host": "us-cdbr-east-05.cleardb.net",
+    "username": "root",
+    "password": "Palestra1951$",
+    "database": "parrot-social",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
