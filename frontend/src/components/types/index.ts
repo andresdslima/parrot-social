@@ -13,6 +13,11 @@ export interface Post {
   post_id: number,
   user_id: number,
   content: string,
+  name: string,
+  apartment: number,
+  avatar: string,
+  created_at?: string,
+  updated_at?: string,
 };
 
 export interface Login {

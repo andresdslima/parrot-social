@@ -35,7 +35,7 @@ const RegistrationForm: React.FC = () => {
       admin: false,
     },
 
-    validationSchema,
+    validationSchema: validationSchema,
 
     onSubmit: async values => {
       await createUser({
