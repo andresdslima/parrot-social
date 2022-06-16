@@ -3,15 +3,18 @@ const { Post } = require("../models")
 const PostController = {
     async create(req, res) {
         try {
-            const {user_id, content } = req.body;
+            const {user_id, content, name, apartment, avatar } = req.body;
 
-        if (!user_id || !content)
+        if (!user_id || !content || !name || !apartment || !avatar)
         return res.status(400).json({
             message: 'Id de usuário e conteúdo são obrigatórios!'
         })
         const newPost = await Post.create({
            user_id,
-           content
+           content,
+           name,
+           apartment,
+           avatar
         });
 
         res.json(newPost);
