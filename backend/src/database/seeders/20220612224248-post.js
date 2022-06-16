@@ -8,12 +8,12 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-    {
-      user_id: 10,
-    content:'blablabla teste',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
+  //   {
+  //     user_id: 1,
+  //   content:'blablabla teste',
+  //   createdAt: new Date(),
+  //   updatedAt: new Date(),
+  // },
   
 
 ])
