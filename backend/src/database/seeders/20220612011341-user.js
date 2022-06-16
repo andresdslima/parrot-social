@@ -1,41 +1,24 @@
 'use strict';
+const bcrypt = require ('bcrypt');
 
 
 module.exports = {
   async up (queryInterface, Sequelize) {
+    const password = 'carlinhos123'
+    const newPassword = bcrypt.hashSync(password,6)
+    
     await queryInterface.bulkInsert('user', [{
       name: 'Carlos Alberto Sindico',
       username: 'carlinhos_sindico',
       avatar: '1',
       email: 'carlos@gmail.com',
       apartment: 109,
-      password: 'carlinhos123',
+      password: newPassword,
       admin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-    {
-      name: 'João Silva',
-      username: 'joao_silva',
-      avatar: '2',
-      email: 'joao@gmail.com',
-      apartment: 110,
-      password: '123456',
-      admin: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      name: 'Maria Betânia',
-      username: 'mariab',
-      avatar: '2',
-      email: 'mariab@gmail.com',
-      apartment: 200,
-      password: '1234567',
-      admin: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
+    
       
           
       
