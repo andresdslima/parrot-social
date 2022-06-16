@@ -10,7 +10,7 @@ const UserController = {
         return res.status(400).json({
             message: 'Todas as informações são obrigatórias!'
         })
-        const newPassword = bcrypt.hashSync(password,5)    
+        const newPassword = bcrypt.hashSync(password,6)    
         const newUser = await User.create({
             name,
             username,

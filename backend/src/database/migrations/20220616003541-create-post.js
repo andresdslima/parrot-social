@@ -19,6 +19,18 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(300)
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING(300),
+      },
+      apartment: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      avatar: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

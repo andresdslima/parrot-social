@@ -1,8 +1,12 @@
-const db = require ('../database/index')
-const { DataTypes } = require ('sequelize')
-const { User } = require('./User')
+const db = require('../database/index')
+const {
+    DataTypes
+} = require('sequelize')
+const {
+    User
+} = require('./User')
 
-const Post = db.define ('post', {
+const Post = db.define('post', {
     post_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,6 +21,18 @@ const Post = db.define ('post', {
     },
     content: {
         type: DataTypes.STRING
+    },
+    name: {
+        type: DataTypes.STRING,
+
+    },
+    apartment: {
+
+        type: DataTypes.INTEGER,
+    },
+    avatar: {
+
+        type: DataTypes.STRING,
     },
     createdAt: {
         type: DataTypes.DATE
