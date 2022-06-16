@@ -8,6 +8,7 @@ import user4 from '../../assets/user4.png';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { createUser } from '../../services/MainAPI/users';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('*'),
@@ -20,6 +21,8 @@ const validationSchema = Yup.object({
 });
 
 const RegistrationForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -56,11 +59,13 @@ const RegistrationForm: React.FC = () => {
       values.avatar = '1';
       values.admin = false;
       values.confirmPassword = '';
+      // handleReset
+      navigate('/login');
     }
   });
 
   return (
-    <>
+    <Styled.CentralCard>
       <Styled.Logo src={logo} alt="Parrot logo" />
       <h2>CADASTRO</h2>
       <Styled.SForm onSubmit={formik.handleSubmit}>
@@ -189,7 +194,7 @@ const RegistrationForm: React.FC = () => {
       </Styled.SForm>
 
       <Styled.SLink to="/login">Já possuo cadastro</Styled.SLink>
-    </>
+    </Styled.CentralCard>
   );
 };
 
