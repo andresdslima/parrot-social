@@ -3,14 +3,20 @@ import Container from '../../components/Container';
 import Header from '../../components/Header';
 import FeedContainer from '../../components/FeedContainer';
 import FeedMessages from '../../components/FeedMessages';
-const Feed: React.FC = () => {
+import { usePost } from '../../hooks/usePost';
+
+
+function Feed(): JSX.Element {
+
+  const postList = usePost() 
+
   return (
     <Container>
     <Header />
     <FeedContainer />
-    <FeedMessages post_id={0} user_id={0} content={''} name={''} apartment={0} avatar={''} />
+    <FeedMessages post={postList} />
     </Container>
-  )
+  );
 }
-  
-  export default Feed;
+
+export default Feed;

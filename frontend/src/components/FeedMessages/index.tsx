@@ -1,34 +1,31 @@
 import React from 'react';
 import * as Styled from './styled'
 import { createPost } from '../../services/MainAPI/posts';
+import { Post } from '../types';
 
 interface PostFeedProps {
-  post_id: number,
-  user_id: number,
-  content: string,
-  name: string,
-  apartment: number,
-  avatar: string,
-  created_at?: string,
-  updated_at?: string,
-    }
+  posts: Post[];
+}
 
 
 
-const FeedMessages: React.FC<PostFeedProps> = (props: PostFeedProps) => {
+const FeedMessages: React.FC<PostFeedProps> = ({ posts }) => {
 
 return (
 
-<Styled.Container>  
+  {posts.map((post: => (
+      <Styled.Container>  
     <Styled.CardContainer>
-    <img src={props.avatar}/>
+    <img src={post.avatar}/>
      <Styled.CardBody>
-    <h1>{props.name} - apê{props.apartment}</h1>
-        <h2>{props.created_at}</h2>
-    <p>{props.content}</p>
+    <h1>{post.name} - apê{post.apartment}</h1>
+        <h2>{post.created_at}</h2>
+    <p>{post.content}</p>
     </Styled.CardBody>
                 </Styled.CardContainer> 
 </Styled.Container>
+    )).reverse()}
+
 
 
 )
