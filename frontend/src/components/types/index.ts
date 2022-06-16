@@ -4,7 +4,7 @@ export interface User {
   email: string,
   username: string,
   password: string,
-  apartment: number | undefined,
+  apartment?: number,
   avatar?: string,
   admin?: boolean,
 };
@@ -16,11 +16,9 @@ export interface Post {
   name: string,
   apartment: number,
   avatar: string,
-  created_at?: string,
-  updated_at?: string,
 };
 
 export interface Login {
-  email: string;
-  password: string;
+  email: string,
+  password: string,
 };

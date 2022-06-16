@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { loginUser } from '../../services/MainAPI/users';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../../services/MainAPI/config';
 // import { useDispatch } from 'react-redux';
 // import { signIn } from '../../store/users';
 
@@ -30,30 +31,31 @@ const LoginForm: React.FC = () => {
       //   email: values.email,
       //   password: values.password,
       // });
-
+      console.log(values);
       const { accessToken, user } = await loginUser(values);
+      console.log(user);
 
-      if (user == undefined) {
+      if (user === undefined) {
         alert('Usuário ou senha inválidos!');
         return;
+      }
+      else {
+        // dispatch(signIn({ accessToken, permission: user.permission }));
+        api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        alert(JSON.stringify({
+          accessToken, username: user.username
+        }, null, 2));
+        console.log(values);
+        alert('Usuário logado!');
+
+        values.email = '';
+        values.password = '';
+        navigate('/feed');
       };
 
-      // dispatch(signIn({ accessToken, permission: user.permission }));
-      alert(JSON.stringify({
-        accessToken, username: user.username
-      }, null, 2));
-
-      // if (response.data !== 200) USUARIO NAO CADASTRADO???
-      // if (response.data.response.status === 400 || 401 || 403 || 500) {
+      // if (response.status === 400 || 401 || 403 || 500) {
       //   return alert('Usuário ou senha inválidos!');
       // };
-
-      console.log(values);
-      alert('Usuário logado!');
-
-      values.email = '';
-      values.password = '';
-      navigate('/feed');
     }
   });
 
