@@ -1,9 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import usersSlice from "./users"
+import postsSlice from "./post"
 
-const store = configureStore({
-  reducer: {},
-});
+const persistConfig = {
+    key: "@users",
+    storage,
+};
 
-export type RootStore = ReturnType<typeof store.getState>;
+const persistedReducer = persistReducer(persistConfig, postsSlice);
 
-export default store;
+export const store = configureStore({
+    reducer: {
+        usersSlice,
+        persistedReducer
+    },
+})
+
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch

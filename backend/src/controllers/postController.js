@@ -1,5 +1,4 @@
 const { Post } = require("../models")
-const { puxaToken } = require("../controllers/authController")
 
 const PostController = {
     async create(req, res) {
@@ -45,15 +44,19 @@ const PostController = {
             const {
                 content
             } = req.body;
+            const {
+                name,
+            } = req.auth;
 
-            const existId = await Post.count({
+            const postByUser = await Post.count({
                 where: {
-                    post_id: id
+                    post_id: id,
+                    name
                 }
             });
 
-            if (!existId) {
-                return res.status(400).json('Post não encontrado');
+            if (!postByUser) {
+                return res.status(400).json('Erro ao tentar atualizar o post');
             }
 
             const updatedPost = await Post.update({
@@ -76,15 +79,19 @@ const PostController = {
             const {
                 id
             } = req.params;
+            const {
+                name,
+            } = req.auth;
 
-            const existIdPost = await Post.count({
+            const postByUser = await Post.count({
                 where: {
-                    post_id:id
+                    post_id: id,
+                    name
                 }
             });
 
-            if (!existIdPost) {
-                return res.status(400).json('Post não encontrado');
+            if (!postByUser) {
+                return res.status(400).json('Erro ao tentar deletar o post');
             }
 
             await Post.destroy({

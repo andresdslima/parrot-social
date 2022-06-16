@@ -22,3 +22,18 @@ export interface Login {
   email: string,
   password: string,
 };
+
+export interface UserState {
+  isLogged: boolean,
+  accessToken: string,
+  admin: boolean,
+  user_id?: number,
+  name?: string,
+  email?: string,
+  apartment?: number,
+  avatar?: string,
+};
+
+export interface PostState {
+  post: Post[],
+};
