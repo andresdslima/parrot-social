@@ -17,4 +17,4 @@ app.use(routes)
 
 app.use(handleError)
 
-app.listen(6000 || port, () => console.log('Servidor no ar!'))
+module.exports = app
