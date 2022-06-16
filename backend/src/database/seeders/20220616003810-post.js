@@ -11,16 +11,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-    {
-      user_id: 2,
-      content: 'bla bla bla',
-      name: 'João Silva',
-      apartment: 110,
-      avatar:'2',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-  },
-  
+    
 
 ])
   },
