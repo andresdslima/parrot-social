@@ -6,11 +6,11 @@ const UserController = {
         try {
         const {name,username, avatar, email, password, apartment, admin } = req.body;
 
-        if (!name || !username || !avatar || !email || !password || !apartment || !admin)
-        return res.status(400).json({
-            message: 'Todas as informações são obrigatórias!'
-        })
-        const newPassword = bcrypt.hashSync(password,5)    
+        // if (!name || !username || !avatar || !email || !password || !apartment || !admin)
+        // return res.status(400).json({
+        //     message: 'Todas as informações são obrigatórias!'
+        // })
+        const newPassword = bcrypt.hashSync(password,6)    
         const newUser = await User.create({
             name,
             username,

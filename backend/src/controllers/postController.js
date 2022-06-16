@@ -1,14 +1,14 @@
 const { Post } = require("../models")
+const { puxaToken } = require("../controllers/authController")
 
 const PostController = {
     async create(req, res) {
         try {
-            const {user_id, content, name, apartment, avatar } = req.body;
+        const { content } = req.body;
 
-        if (!user_id || !content || !name || !apartment || !avatar)
-        return res.status(400).json({
-            message: 'Id de usuário e conteúdo são obrigatórios!'
-        })
+        const {id: user_id, name: name, avatar: avatar, apartment: apartment} = req.auth
+        
+        
         const newPost = await Post.create({
            user_id,
            content,
