@@ -31,7 +31,10 @@ const AuthController = {
         const token = jwt.sign({
             id: user.user_id,
             email: user.email,
-            username: user.username
+            username: user.username,
+            name: user.name,
+            avatar: user.avatar,
+            apartment: user.apartment
         },
             secret.key
         )
