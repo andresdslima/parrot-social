@@ -6,10 +6,6 @@ const UserController = {
         try {
         const {name,username, avatar, email, password, apartment, admin } = req.body;
 
-        // if (!name || !username || !avatar || !email || !password || !apartment || !admin)
-        // return res.status(400).json({
-        //     message: 'Todas as informações são obrigatórias!'
-        // })
         const newPassword = bcrypt.hashSync(password,6)    
         const newUser = await User.create({
             name,
@@ -73,22 +69,24 @@ const UserController = {
             const {
                 id
             } = req.params;
+            const { name } = req.auth
             const {
-                name, username, avatar, email, apartment, password, admin
+                username, avatar, email, password, apartment
             } = req.body;
 
             const existId = await User.count({
                 where: {
-                    user_id: id
+                    user_id: id,
+                    name
                 }
             });
 
             if (!existId) {
-                return res.status(400).json('Usuário não encontrado');
+                return res.status(400).json('Erro ao atualizar usuário');
             }
 
             const updatedUser = await User.update({
-                name, username, avatar, email, apartment, password, admin
+                username, avatar, email, apartment, password
             }, {
                 where: {
                     user_id: id,
@@ -106,15 +104,17 @@ const UserController = {
             const {
                 id
             } = req.params;
+            const { name } = req.auth
 
             const existIdUser = await User.count({
                 where: {
-                    user_id:id
+                    user_id:id,
+                    name
                 }
             });
 
             if (!existIdUser) {
-                return res.status(400).json('Usuário não encontrado');
+                return res.status(400).json('Erro ao deletar usuário');
             }
 
             await User.destroy({
