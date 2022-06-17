@@ -37,14 +37,14 @@ describe('Teste de Integração (Endpoints)', () => {
         });
         
 
-        test('Em caso de sucesso, deve retornar 200', async () => {
+        test('Em caso de sucesso, deve retornar 201', async () => {
             const response = await supertest(app)
                 .post('/user')
                 .send(usuarioValido)
 
                 usuarioCadastrado = response.body 
 
-            return expect(response.status).toBe(200)
+            return expect(response.status).toBe(201)
         })
 
         test('Em caso de erro, deve retornar 400', async () => {
