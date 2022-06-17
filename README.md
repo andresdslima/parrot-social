@@ -5,5 +5,6 @@ Projeto realizado por:
 @juguonik
 @andresdslima
 @rainierpironi
+@lukedevelopy
 
 API = https://documenter.getpostman.com/view/21419953/UzBjso2K

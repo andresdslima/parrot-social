@@ -1,12 +1,11 @@
 const { User, Post } = require("../models")
-const bcrypt = require ('bcrypt');
+const bcrypt = require('bcrypt');
 
 const UserController = {
-    async create(req,res) {
+    async create(req, res) {
         try {
         console.log(req);
         const {name,username, avatar, email, password, apartment, admin } = req.body;
-
         const newPassword = bcrypt.hashSync(password,6)    
         const newUser = await User.create({
             name,
@@ -17,13 +16,13 @@ const UserController = {
             apartment,
             admin
         });
+    
+            res.status(201).json(newUser);
 
-        res.json(newUser);
-
-    } catch (error) {
-        res.json('Não foi possível cadastrar o usuário');
+        } catch (error) {
+            res.json('Não foi possível cadastrar o usuário');
             console.error(error);
-    }
+        }
     },
     async listAllUsers(req, res) {
         try {
@@ -42,10 +41,10 @@ const UserController = {
             const {
                 username
             } = req.params;
-           
+
             const existUsername = await User.findOne({
                 where: {
-                   username
+                    username
                 }
             });
 
@@ -55,11 +54,11 @@ const UserController = {
 
             const postsByUser = await Post.findAll(
 
-             {
-                where: {
-                    user_id: existUsername.user_id
-                }
-            });
+                {
+                    where: {
+                        user_id: existUsername.user_id
+                    }
+                });
             res.status(201).json(postsByUser);
         } catch (error) {
             res.status(404).json('Verfique os dados e tente novamente');
@@ -102,7 +101,7 @@ const UserController = {
             console.error(error);
         };
     },
-    
+
     async deleteUser(req, res) {
         try {
             console.log(req);
@@ -113,7 +112,7 @@ const UserController = {
 
             const existIdUser = await User.count({
                 where: {
-                    user_id:id,
+                    user_id: id,
                     name
                 }
             });
@@ -124,7 +123,7 @@ const UserController = {
 
             await User.destroy({
                 where: {
-                    user_id:id
+                    user_id: id
                 }
             });
 
@@ -135,7 +134,7 @@ const UserController = {
         }
     },
 
-    
+
 }
 
 module.exports = UserController

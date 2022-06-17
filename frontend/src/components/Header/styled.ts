@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Header = styled.header`
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 5px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -15,7 +15,7 @@ export const Nav = styled.nav`
        color: #76BB4C;
        font-weight: 400;
        font-size: 24px;
-       margin-top: 4px;
+       margin: 4px;
        padding-right: 15px;
 
 
@@ -56,6 +56,8 @@ export const Nav = styled.nav`
 `
 
 export const Img = styled.img`
+
+    padding-top: 15px;
     @media only screen and (max-width: 900px) {
     width: 80%;}
 `
