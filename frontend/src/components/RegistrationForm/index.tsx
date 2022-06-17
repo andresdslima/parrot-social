@@ -48,7 +48,7 @@ const RegistrationForm: React.FC = () => {
         password: values.password,
         apartment: values.apartment,
         avatar: values.avatar,
-        admin: false,
+        admin: values.admin,
       });
       // console.log(values);
       console.log(response);

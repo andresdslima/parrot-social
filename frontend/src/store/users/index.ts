@@ -5,7 +5,8 @@ const initialState: UserState = {
     isLogged: false,
     accessToken: "",
     permission: Permission.Nothing,
-    user_id: undefined
+    user_id: undefined,
+    admin: false
 }
 
 const usersSlice = createSlice({
