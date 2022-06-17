@@ -8,6 +8,8 @@ import user4 from '../../assets/user4.png';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { createUser } from '../../services/MainAPI/users';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../../services/MainAPI/config';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('*'),
@@ -20,6 +22,8 @@ const validationSchema = Yup.object({
 });
 
 const RegistrationForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -32,10 +36,12 @@ const RegistrationForm: React.FC = () => {
       admin: false,
     },
 
-    validationSchema: validationSchema,
+    validationSchema,
 
     onSubmit: async values => {
-      await createUser({
+      console.log(values);
+      api.defaults.headers.common['Content-Type'] = 'application/json';
+      const response = await createUser({
         name: values.name,
         email: values.email,
         username: values.username,
@@ -44,23 +50,32 @@ const RegistrationForm: React.FC = () => {
         avatar: values.avatar,
         admin: false,
       });
+      // console.log(values);
+      console.log(response);
 
-      console.log(values);
-      alert('Usuário cadastrado com sucesso!');
+      if (response && response.status !== 200 || 201) {
+        alert('Erro ao criar usuário');
+        return;
+      }
+      else {
+        alert('Usuário cadastrado com sucesso!');
+        navigate('/login');
+      };
 
       values.name = '';
       values.email = '';
       values.username = '';
       values.password = '';
+      values.confirmPassword = '';
       values.apartment = undefined;
       values.avatar = '1';
       values.admin = false;
-      values.confirmPassword = '';
+      // formik.handleReset();
     }
   });
 
   return (
-    <>
+    <Styled.CentralCard>
       <Styled.Logo src={logo} alt="Parrot logo" />
       <h2>CADASTRO</h2>
       <Styled.SForm onSubmit={formik.handleSubmit}>
@@ -189,7 +204,7 @@ const RegistrationForm: React.FC = () => {
       </Styled.SForm>
 
       <Styled.SLink to="/login">Já possuo cadastro</Styled.SLink>
-    </>
+    </Styled.CentralCard>
   );
 };
 

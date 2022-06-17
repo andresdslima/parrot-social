@@ -4,6 +4,7 @@ const bcrypt = require ('bcrypt');
 const UserController = {
     async create(req,res) {
         try {
+        console.log(req);
         const {name,username, avatar, email, password, apartment, admin } = req.body;
 
         const newPassword = bcrypt.hashSync(password,6)    
@@ -26,6 +27,7 @@ const UserController = {
     },
     async listAllUsers(req, res) {
         try {
+            console.log(req);
             const listUsers = await User.findAll();
             res.status(201).json(listUsers);
         } catch (error) {
@@ -36,6 +38,7 @@ const UserController = {
 
     async listPostsByUsername(req, res) {
         try {
+            console.log(req);
             const {
                 username
             } = req.params;
@@ -66,6 +69,7 @@ const UserController = {
 
     async updateUser(req, res) {
         try {
+            console.log(req);
             const {
                 id
             } = req.params;
@@ -101,6 +105,7 @@ const UserController = {
     
     async deleteUser(req, res) {
         try {
+            console.log(req);
             const {
                 id
             } = req.params;

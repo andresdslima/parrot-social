@@ -1,14 +1,12 @@
 export interface User {
-  id: number,
+  user_id: number,
   name: string,
   email: string,
   username: string,
   password: string,
-  apartment: number | undefined,
+  apartment?: number,
   avatar?: string,
   admin?: boolean,
-  created_at?: string,
-  updated_at?: string,
 };
 
 export interface Post {
@@ -18,28 +16,24 @@ export interface Post {
   name: string,
   apartment: number,
   avatar: string,
-  created_at?: string,
-  updated_at?: string,
 };
 
-export enum Permission {
-  "Nothing",
-  "User",
-  "Admin"
-}
+export interface Login {
+  email: string,
+  password: string,
+};
 
 export interface UserState {
   isLogged: boolean,
   accessToken: string,
-  permission: Permission,
+  admin: boolean,
   user_id?: number,
   name?: string,
   email?: string,
-  apartment?: number
-  avatar?: string
-  created_at?: string,
-}
+  apartment?: number,
+  avatar?: string,
+};
 
 export interface PostState {
-  post: Post []
-}
+  post: Post[],
+};
