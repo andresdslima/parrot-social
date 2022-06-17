@@ -8,6 +8,7 @@
     "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "tsc && vite build",
+    "build-react": "react-scripts build",
     "api": "json-server-auth -w api.json -p 3333",
     "preview": "vite preview"
   },
@@ -22,6 +23,7 @@
     "react-dom": "^18.0.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.52.3",
     "styled-components": "^5.3.5",
@@ -37,5 +39,17 @@
     "gh-pages": "^4.0.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.9"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
