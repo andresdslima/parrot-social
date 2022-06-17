@@ -13,10 +13,10 @@ export interface Post {
   post_id: number,
   user_id: number,
   content: string,
-  name: string,
-  apartment: number,
-  avatar: string,
-  created_at: string,
+  name?: string,
+  apartment?: number,
+  avatar?: string,
+  created_at?: string,
 };
 
 export interface Login {
@@ -33,15 +33,8 @@ export interface UserState {
   email?: string,
   apartment?: number,
   avatar?: string,
-  permission: Permission
 };
 
 export interface PostState {
   post: Post[],
 };
-
-export enum Permission {
-  "Nothing",
-  "User",
-  "Admin"
-}

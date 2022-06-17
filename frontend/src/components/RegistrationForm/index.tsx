@@ -9,7 +9,6 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { createUser } from '../../services/MainAPI/users';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../services/MainAPI/config';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('*'),
@@ -52,10 +51,10 @@ const RegistrationForm: React.FC = () => {
       // console.log(values);
       console.log(response);
 
-      if (response && response.status != 200 || 201) {
-        alert('Erro ao criar usuário');
-        return;
-      };
+      // if (response.status !== 201 || 200) {
+      //   alert('Erro ao criar usuário');
+      //   return;
+      // };
 
       alert('Usuário cadastrado com sucesso!');
       navigate('/login');

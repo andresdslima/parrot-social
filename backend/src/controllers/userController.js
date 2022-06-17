@@ -4,11 +4,21 @@ const bcrypt = require('bcrypt');
 const UserController = {
     async create(req, res) {
         try {
-            const { name, username, avatar, email, password, apartment, admin } = req.body;
-            const newUser = { name, username, avatar, email, password, apartment, admin };
             console.log(req);
+            const { name, username, avatar, email, password, apartment, admin } = req.body;
+            const newPassword = bcrypt.hashSync(password, 6)
+            const newUser = await User.create({
+                name,
+                username,
+                avatar,
+                email,
+                password: newPassword,
+                apartment,
+                admin
+            });
 
-            return res.json(newUser).status(201);
+            res.status(201).json(newUser);
+
         }
         catch (error) {
             console.error(error);
@@ -30,26 +40,26 @@ const UserController = {
         try {
             console.log(req);
             const {
-                username
+                id
             } = req.params;
 
-            const existUsername = await User.findOne({
+            const existUser = await User.findOne({
                 where: {
-                    username
+                    id
                 }
             });
 
-            if (!existUsername) {
+            if (!existUser) {
                 return res.status(400).json('Usuário não encontrado');
-            }
+            };
 
             const postsByUser = await Post.findAll(
-
                 {
                     where: {
-                        user_id: existUsername.user_id
+                        user_id: existUser.user_id
                     }
                 });
+
             res.status(201).json(postsByUser);
         } catch (error) {
             res.status(404).json('Verfique os dados e tente novamente');
