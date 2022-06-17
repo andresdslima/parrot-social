@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt')
 const AuthController = {
 
     async login(req, res) {
-
+        console.log(req);
         const {
             email,
             password

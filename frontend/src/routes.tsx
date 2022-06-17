@@ -6,6 +6,7 @@ import {
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Feed from './pages/Feed';
+import User from "./pages/User";
 
 const MyRoutes: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const MyRoutes: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </Router>
   );
