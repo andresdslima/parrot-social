@@ -11,12 +11,12 @@ import { addNewPost } from '../../store/post';
 
 const FeedContainer: React.FC = () => {
 
-  const user_id = useSelector((state: RootState) => state.usersSlice.user_id) as number;
-  const name = useSelector((state: RootState) => state.usersSlice.name) as string;
-  const apartment = useSelector((state: RootState) => state.usersSlice.apartment) as number;
-  const avatar = useSelector((state: RootState) => state.usersSlice.avatar) as string;
-  const created_at = useSelector((state: RootState) => state.usersSlice.created_at) as string;
-  const dispatch = useDispatch();
+  // const user_id = useSelector((state: RootState) => state.usersSlice.user_id) as number;
+  // const name = useSelector((state: RootState) => state.usersSlice.name) as string;
+  // const apartment = useSelector((state: RootState) => state.usersSlice.apartment) as number;
+  // const avatar = useSelector((state: RootState) => state.usersSlice.avatar) as string;
+  // const created_at = useSelector((state: RootState) => state.usersSlice.created_at) as string;
+  // const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
   post_id: 0,
@@ -28,15 +28,15 @@ const FeedContainer: React.FC = () => {
   created_at: '',
     },
     onSubmit: async values => {
-      const data = await createPost({...values, user_id: user_id, 
-        apartment: apartment, avatar: avatar, name: name, created_at: created_at });
-      dispatch(addNewPost({post: data}));
+      // const data = await createPost({...values, user_id: user_id, 
+      //   apartment: apartment, avatar: avatar, name: name, created_at: created_at });
+      // dispatch(addNewPost({post: data}));
     }
   })
 
   return (
     <Styled.Container>   
-      <img src={avatar}/>
+      <img src=''/>
       <Styled.FormFeed onSubmit={formik.handleSubmit}>
       <textarea
        name='message'

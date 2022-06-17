@@ -40,7 +40,6 @@ const RegistrationForm: React.FC = () => {
 
     onSubmit: async values => {
       console.log(values);
-      api.defaults.headers.common['Content-Type'] = 'application/json';
       const response = await createUser({
         name: values.name,
         email: values.email,
@@ -53,23 +52,14 @@ const RegistrationForm: React.FC = () => {
       // console.log(values);
       console.log(response);
 
-      if (response && response.status !== 200 || 201) {
+      if (response && response.status === 400 || 401 || 403 || 500) {
         alert('Erro ao criar usuário');
         return;
-      }
-      else {
-        alert('Usuário cadastrado com sucesso!');
-        navigate('/login');
       };
 
-      values.name = '';
-      values.email = '';
-      values.username = '';
-      values.password = '';
-      values.confirmPassword = '';
-      values.apartment = undefined;
-      values.avatar = '1';
-      values.admin = false;
+      alert('Usuário cadastrado com sucesso!');
+      navigate('/login');
+
       // formik.handleReset();
     }
   });
