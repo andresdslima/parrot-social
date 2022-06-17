@@ -52,20 +52,22 @@ const FeedMessages = () => {
     }
   });
 
+  // posts.map(post => post.user_id);
+
   return (
     {
-      posts.map((post) => (
+      posts.map((post: Post) => (
         <Styled.Container>
-          <Styled.CardContainer>
-            <img src={post.avatar} />
+          <Styled.CardContainer key={post.post_id}>
+            <img src={`../../assets/user${post.avatar}.png`} />
             <Styled.CardBody>
-              <h1>{post.name} - apê{post.apartment}</h1>
+              <h1>{post.name} - apê {post.apartment}</h1>
               <h2>{post.created_at}</h2>
               <p>{post.content}</p>
             </Styled.CardBody>
           </Styled.CardContainer>
         </Styled.Container>
-      ))
+      )).reverse()
     }
   );
 };
