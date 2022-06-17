@@ -6,8 +6,18 @@ const UserController = {
         try {
         console.log(req);
         const {name,username, avatar, email, password, apartment, admin } = req.body;
-
-            res.json(newUser);
+        const newPassword = bcrypt.hashSync(password,6)    
+        const newUser = await User.create({
+            name,
+            username,
+            avatar,
+            email,
+            password:newPassword,
+            apartment,
+            admin
+        });
+    
+            res.status(201).json(newUser);
 
         } catch (error) {
             res.json('Não foi possível cadastrar o usuário');
