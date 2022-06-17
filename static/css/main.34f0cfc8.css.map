@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.34f0cfc8.css","mappings":"AAAA,KACE,eAEA,UAGE,sBAFA,SAIA,iBAHA,UAEA,oBACA","sources":["App.scss"],"sourcesContent":["html {\r\n  font-size: 15px;\r\n\r\n  body {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    text-decoration: none;\r\n    min-height: 100vh;\r\n  }\r\n}"],"names":[],"sourceRoot":""}
