@@ -34,12 +34,14 @@ const AuthController = {
             username: user.username,
             name: user.name,
             avatar: user.avatar,
-            apartment: user.apartment
+            apartment: user.apartment,
+            admin: user.admin
         },
             secret.key
         )
 
-        return res.json({ token })
+        return res.json({ token, user })
+        
 
 
     },
