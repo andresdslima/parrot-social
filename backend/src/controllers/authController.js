@@ -40,7 +40,7 @@ const AuthController = {
             secret.key
         )
 
-        return res.json({ token, user })
+        return res.json({ token, user: {id: user.user_id, admin: user.admin} })
         
 
 
