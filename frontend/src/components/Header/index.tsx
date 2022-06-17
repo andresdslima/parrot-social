@@ -3,9 +3,17 @@ import logoFeed from '../../assets/logo-feed.png';
 import { Link } from 'react-router-dom';
 import * as Styled from './styled';
 import { Nav, Navbar, Container } from 'react-bootstrap';
-
+import {useDispatch} from 'react-redux';
+import { signOut } from "../../store/users";
 
 const Header: React.FC = () => {
+  const dispatch = useDispatch()
+  const handleLogout =() => {
+    dispatch(signOut())
+    alert("Deslogado")
+  }
+
+
   return (  <Styled.Header>
     <div className="logo-area">
       <Styled.Img src={logoFeed} alt="omma" />
@@ -15,9 +23,9 @@ const Header: React.FC = () => {
         <li>
           <h3>Olá, usuário</h3>
         </li>
-        <div className="vr" />
+        <div className="vr"/>
         <li>
-          <Link to="/logout">sair</Link>
+          <Link to="" onClick={handleLogout} >sair</Link>
         </li>
         </ul>
     </Styled.Nav>

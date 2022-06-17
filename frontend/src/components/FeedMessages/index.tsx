@@ -4,6 +4,7 @@ import { createPost } from '../../services/MainAPI/posts';
 import { Post } from '../types';
 
 interface PostFeedProps {
+  
   posts: Post[];
 }
 
@@ -13,8 +14,9 @@ const FeedMessages: React.FC<PostFeedProps> = ({ posts }) => {
 
 return (
 
-  {posts.map((post: => (
+
       <Styled.Container>  
+        {posts.map(post => (
     <Styled.CardContainer>
     <img src={post.avatar}/>
      <Styled.CardBody>
@@ -23,8 +25,9 @@ return (
     <p>{post.content}</p>
     </Styled.CardBody>
                 </Styled.CardContainer> 
+                )).reverse()}
 </Styled.Container>
-    )).reverse()}
+  
 
 
 

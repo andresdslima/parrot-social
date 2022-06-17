@@ -14,7 +14,7 @@ function Feed(): JSX.Element {
     <Container>
     <Header />
     <FeedContainer />
-    <FeedMessages post={postList} />
+    <FeedMessages posts={postList} />
     </Container>
   );
 }
