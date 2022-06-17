@@ -17,4 +17,4 @@ app.use(routes)
 
 app.use(handleError)
 
-app.listen(6000 || port, () => console.log('Servidor no ar!'))
+app.listen(port || 6000, () => console.log('Servidor no ar!'))

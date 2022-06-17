@@ -32,31 +32,29 @@ const LoginForm: React.FC = () => {
       //   password: values.password,
       // });
       console.log(values);
-      const { accessToken, user } = await loginUser(values);
-      console.log(user);
+      const { token, user } = await loginUser(values);
+      console.log(token);
 
-      if (user === undefined) {
+      if (!token) {
         alert('Usuário ou senha inválidos!');
         return;
-      }
-      else {
-        // dispatch(signIn({ accessToken, permission: user.permission }));
-        api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        alert(JSON.stringify({
-          accessToken, username: user.username
-        }, null, 2));
+      };
+      
+        // dispatch(signIn({ token, permission: user.permission }));
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;        
+        // alert(JSON.stringify({
+        //   token, username: user.username
+        // }, null, 2));
         console.log(values);
         alert('Usuário logado!');
 
-        values.email = '';
-        values.password = '';
+        // formik.handleReset();
         navigate('/feed');
-      };
+      }
 
       // if (response.status === 400 || 401 || 403 || 500) {
       //   return alert('Usuário ou senha inválidos!');
       // };
-    }
   });
 
   return (
