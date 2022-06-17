@@ -19,7 +19,7 @@ describe('No controller, ao executar função', () => {
             // mongoDB.connect();
         });
 
-        test('em caso de sucesso, deve retornar 200', async () => {
+        test('em caso de sucesso, deve retornar 201', async () => {
             const response = await supertest(app)
                 .post('/user')
                 .send({
@@ -42,7 +42,7 @@ describe('No controller, ao executar função', () => {
                     admin: false
                 }));
 
-            return expect(response.status).toBe(200)
+            return expect(response.status).toBe(201)
         })
 
         test('em caso de sucesso, retornar response do request', async () => {
