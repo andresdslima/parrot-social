@@ -3,6 +3,7 @@ const { Post } = require("../models")
 const PostController = {
     async create(req, res) {
         try {
+        console.log(req);
         const { content } = req.body;
 
         const {id: user_id, name: name, avatar: avatar, apartment: apartment} = req.auth
@@ -26,6 +27,7 @@ const PostController = {
 
     async listAllPosts(req, res) {
         try {
+            console.log(req);
             const listPosts = await Post.findAll();
             res.status(201).json(listPosts);
         } catch (error) {
@@ -38,6 +40,7 @@ const PostController = {
 
     async updatePost(req, res) {
         try {
+            console.log(req);
             const {
                 id
             } = req.params;
@@ -76,6 +79,7 @@ const PostController = {
 
     async deletePost(req, res) {
         try {
+            console.log(req);
             const {
                 id
             } = req.params;
