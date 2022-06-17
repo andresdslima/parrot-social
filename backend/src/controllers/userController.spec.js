@@ -1,5 +1,6 @@
 const supertest = require('supertest');
 const app = require('../../app-test');
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJ0ZXN0ZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InRlc3RlIiwibmFtZSI6IlRlc3RlIiwiYXZhdGFyIjoiMSIsImFwYXJ0bWVudCI6MjIwLCJpYXQiOjE2NTU0MDkwNzR9.kBwLpnLXYdpJ0WO4hWnlQYQH8jO_wwc_aftyyOSKKAg'
 
 function makeRandomString(length) {
     var result = '';
@@ -18,6 +19,7 @@ describe('No controller, ao executar função', () => {
         beforeAll(() => {
             // mongoDB.connect();
         });
+        
 
         test('em caso de sucesso, deve retornar 200', async () => {
             const response = await supertest(app)
@@ -32,7 +34,7 @@ describe('No controller, ao executar função', () => {
                     admin: false
                 })
 
-                console.log(JSON.stringify({
+                /*console.log(JSON.stringify({
                     name: makeRandomString(10),
                     username: makeRandomString(10),
                     avatar: '2',
@@ -40,7 +42,7 @@ describe('No controller, ao executar função', () => {
                     password: '123456',
                     apartment: 200,
                     admin: false
-                }));
+                }));*/
 
             return expect(response.status).toBe(200)
         })
