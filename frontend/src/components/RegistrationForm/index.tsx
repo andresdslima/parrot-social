@@ -52,7 +52,7 @@ const RegistrationForm: React.FC = () => {
       // console.log(values);
       console.log(response);
 
-      if (response && response.status === 400 || 401 || 403 || 500) {
+      if (response && response.status != 200 || 201) {
         alert('Erro ao criar usuário');
         return;
       };

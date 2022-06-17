@@ -4,15 +4,16 @@ const bcrypt = require('bcrypt');
 const UserController = {
     async create(req, res) {
         try {
-        console.log(req);
-        const {name,username, avatar, email, password, apartment, admin } = req.body;
+            const { name, username, avatar, email, password, apartment, admin } = req.body;
+            const newUser = { name, username, avatar, email, password, apartment, admin };
+            console.log(req);
 
-            res.json(newUser);
-
-        } catch (error) {
-            res.json('Não foi possível cadastrar o usuário');
-            console.error(error);
+            return res.json(newUser).status(201);
         }
+        catch (error) {
+            console.error(error);
+            return res.json('Não foi possível cadastrar o usuário').status(400);
+        };
     },
     async listAllUsers(req, res) {
         try {

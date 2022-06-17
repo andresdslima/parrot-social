@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import usersSlice from "./users"
+// import usersSlice from "./users"
 import postsSlice from "./post"
 
 const persistConfig = {
@@ -13,7 +13,7 @@ const persistedReducer = persistReducer(persistConfig, postsSlice);
 
 export const store = configureStore({
     reducer: {
-        usersSlice,
+        // usersSlice,
         persistedReducer
     },
 })

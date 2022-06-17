@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import * as Styled from './styled';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import {useDispatch} from 'react-redux';
-import { signOut } from "../../store/users";
+// import { signOut } from "../../store/users";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch()
   const handleLogout =() => {
-    dispatch(signOut())
+    // dispatch(signOut())
     alert("Deslogado")
   }
 
