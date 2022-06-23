@@ -1,22 +1,27 @@
 import React from 'react';
 import * as Styled from './styled'
 import user1 from '../../assets/user1.png'
+import { User } from '../types';
 
+interface ProfileDataProps {
+    user: User[];
+}
 
-const UserData: React.FC = () => {
+const UserData: React.FC<ProfileDataProps> = ({ user }) => {
     return (
         <Styled.Container>
-            <Styled.UserContent>
-            <img src={user1} alt="" />
-                <div className='contentProfile'>
-                    <h1>Ra</h1>
-                    <h2>apê 82 </h2>
-                    <h2>user@mail.com</h2>
-                    <h2>00 publicações</h2></div>
-                </Styled.UserContent>
-                <div className='buttonProfile'>
-            <Styled.ButtonFeed type="button">editar perfil</Styled.ButtonFeed>
-            </div>
+             {user.map((user) => (
+            <><Styled.UserContent>
+                     <img src={user.avatar} alt="" />
+                     <div className='contentProfile'>
+                         <h1>{user.name}</h1>
+                         <h2>apê {user.apartment}</h2>
+                         <h2>{user.email}</h2>
+                         <h2> publicações</h2></div>
+                 </Styled.UserContent><div className='buttonProfile'>
+                         <Styled.ButtonFeed type="button">editar perfil</Styled.ButtonFeed>
+                     </div></>
+             ))}
         </Styled.Container>
     );
 };

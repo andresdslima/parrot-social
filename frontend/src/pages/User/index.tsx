@@ -9,7 +9,7 @@ const User: React.FC = () => {
   return (
     <Container>
         <Header />
-        <UserData />
+        <UserData user={[]} />
         <FeedUser />
     </Container>
   )

@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './styled'
-// import { createPost } from '../../services/MainAPI/posts';
 import { Post } from '../types';
 
 interface PostFeedProps {
@@ -9,8 +8,9 @@ interface PostFeedProps {
 
 const FeedMessages = ({ posts }: PostFeedProps) => {
   return (
-    {posts.map(post => (
+
       <Styled.Container>
+        {posts.map(post => (
           <Styled.CardContainer>
             <img src={post.avatar} />
             <Styled.CardBody>
@@ -19,8 +19,8 @@ const FeedMessages = ({ posts }: PostFeedProps) => {
               <p>{post.content}</p>
             </Styled.CardBody>
           </Styled.CardContainer>
+          ))}
       </Styled.Container>
-    ))}
   );
 };
 
