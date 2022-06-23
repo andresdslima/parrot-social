@@ -19,13 +19,13 @@ const FeedContainer: React.FC = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-  post_id: 0,
-  user_id: 0,
-  content: '',
-  name: '',
-  apartment: 0,
-  avatar: '',
-  created_at: '',
+      post_id: 0,
+      user_id: 0,
+      content: '',
+      name: '',
+      apartment: 0,
+      avatar: '',
+      created_at: '',
     },
     onSubmit: async values => {
       const data = await createPost({...values, user_id: user_id, 
@@ -35,17 +35,17 @@ const FeedContainer: React.FC = () => {
   })
 
   return (
-    <Styled.Container>   
-      <img src=''/>
+    <Styled.Container>
+      <img src='' />
       <Styled.FormFeed onSubmit={formik.handleSubmit}>
-      <textarea
-       name='message'
-       id='message'
-      placeholder='Coloque aqui a sua mensagem' value={formik.values.content} onChange={formik.handleChange}/>
-                <Styled.ButtonFeed type='submit'>publicar</Styled.ButtonFeed>
-                </Styled.FormFeed>
-</Styled.Container>
-  )
-}
+        <textarea
+          name='message'
+          id='message'
+          placeholder='Coloque aqui a sua mensagem' value={formik.values.content} onChange={formik.handleChange} />
+        <Styled.ButtonFeed type='submit'>publicar</Styled.ButtonFeed>
+      </Styled.FormFeed>
+    </Styled.Container>
+  );
+};
 
 export default FeedContainer;

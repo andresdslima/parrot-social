@@ -9,14 +9,20 @@ export interface User {
   admin?: boolean,
 };
 
+export enum Permission {
+  "Nothing",
+  "User",
+  "Admin"
+}
+
 export interface Post {
   post_id: number,
   user_id: number,
   content: string,
-  name: string,
-  apartment: number,
-  avatar: string,
-  created_at: string,
+  name?: string,
+  apartment?: number,
+  avatar?: string,
+  created_at?: string,
 };
 
 export interface Login {
@@ -27,22 +33,16 @@ export interface Login {
 export interface UserState {
   isLogged: boolean,
   accessToken: string,
-  admin: boolean,
+  admin?: boolean,
   user_id?: number,
   name?: string,
   email?: string,
   apartment?: number,
   avatar?: string,
   permission: Permission,
-  created_at: string
+  created_at?: string
 };
 
 export interface PostState {
   post: Post[],
 };
-
-export enum Permission {
-  "Nothing",
-  "User",
-  "Admin"
-}

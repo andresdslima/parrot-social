@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { Permission, UserState, Post, PostState } from "../../components/types"
+import { UserState, Post, PostState } from "../../components/types"
 
 
 const initialState: PostState = {

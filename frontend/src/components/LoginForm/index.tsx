@@ -33,9 +33,9 @@ const LoginForm: React.FC = () => {
       // });
       console.log(values);
       const { token, user } = await loginUser(values);
-      console.log(token);
+      console.log(user);
 
-      if (!token) {
+      if (!user || user === undefined) {
         alert('Usuário ou senha inválidos!');
         return;
       };

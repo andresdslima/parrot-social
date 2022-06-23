@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/parrot-social/static/css/main.34f0cfc8.css",
+    "main.js": "/parrot-social/static/js/main.620fb49e.js",
+    "static/media/background.png": "/parrot-social/static/media/background.a03458c75db0c535ab2e.png",
+    "static/media/logo-login.png": "/parrot-social/static/media/logo-login.04018865e964df72d386.png",
+    "index.html": "/parrot-social/index.html",
+    "main.34f0cfc8.css.map": "/parrot-social/static/css/main.34f0cfc8.css.map",
+    "main.620fb49e.js.map": "/parrot-social/static/js/main.620fb49e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.34f0cfc8.css",
+    "static/js/main.620fb49e.js"
+  ]
+}

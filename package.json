@@ -29,7 +29,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "dev": "nodemon backend/app.js",
     "start": "node backend/app.js"
   },
